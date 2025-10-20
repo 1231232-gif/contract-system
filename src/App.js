@@ -309,9 +309,8 @@ const styles = {
     flexWrap: 'wrap'
   },
   searchInput: {
-    flex: 1,
-    minWidth: '200px',
-    maxWidth: '400px',
+    width: '250px',
+    minWidth: '180px',
     position: 'relative'
   }
 };
@@ -627,6 +626,17 @@ const App = () => {
     setFormData({});
   }, [formData, contracts]);
 
+  const handleDeleteContract = useCallback((contract) => {
+    if (window.confirm(`确定要删除合同"${contract.contractName}"吗？\n\n合同编号：${contract.contractNo}\n此操作不可恢复！`)) {
+      setContracts(prev => prev.filter(c => c.id !== contract.id));
+      // 如果删除的是当前查看的合同，返回列表
+      if (selectedContract && selectedContract.id === contract.id) {
+        setSelectedContract(null);
+        setCurrentView('list');
+      }
+    }
+  }, [selectedContract]);
+
   const DashboardView = () => (
     <div>
       <div style={styles.grid}>
@@ -840,17 +850,28 @@ const App = () => {
                     </span>
                   </td>
                   <td style={styles.td}>
-                    <button
-                      onClick={() => {
-                        setSelectedContract(contract);
-                        setCurrentView('detail');
-                      }}
-                      style={{color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px'}}
-                      onMouseOver={(e) => e.target.style.color = '#1d4ed8'}
-                      onMouseOut={(e) => e.target.style.color = '#2563eb'}
-                    >
-                      查看
-                    </button>
+                    <div style={{display: 'flex', gap: '8px'}}>
+                      <button
+                        onClick={() => {
+                          setSelectedContract(contract);
+                          setCurrentView('detail');
+                        }}
+                        style={{color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px'}}
+                        onMouseOver={(e) => e.target.style.color = '#1d4ed8'}
+                        onMouseOut={(e) => e.target.style.color = '#2563eb'}
+                      >
+                        查看
+                      </button>
+                      <span style={{color: '#d1d5db'}}>|</span>
+                      <button
+                        onClick={() => handleDeleteContract(contract)}
+                        style={{color: '#dc2626', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px'}}
+                        onMouseOver={(e) => e.target.style.color = '#991b1b'}
+                        onMouseOut={(e) => e.target.style.color = '#dc2626'}
+                      >
+                        删除
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -880,15 +901,25 @@ const App = () => {
           >
             ← 返回列表
           </button>
-          <button
-            onClick={() => {
-              setFormData(selectedContract);
-              setShowForm(true);
-            }}
-            style={styles.button}
-          >
-            编辑合同
-          </button>
+          <div style={{display: 'flex', gap: '12px'}}>
+            <button
+              onClick={() => handleDeleteContract(selectedContract)}
+              style={{...styles.button, backgroundColor: '#dc2626'}}
+              onMouseOver={(e) => e.target.style.backgroundColor = '#991b1b'}
+              onMouseOut={(e) => e.target.style.backgroundColor = '#dc2626'}
+            >
+              删除合同
+            </button>
+            <button
+              onClick={() => {
+                setFormData(selectedContract);
+                setShowForm(true);
+              }}
+              style={styles.button}
+            >
+              编辑合同
+            </button>
+          </div>
         </div>
 
         <div style={styles.card}>
