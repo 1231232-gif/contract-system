@@ -310,7 +310,8 @@ const styles = {
   },
   searchInput: {
     flex: 1,
-    minWidth: '250px',
+    minWidth: '200px',
+    maxWidth: '400px',
     position: 'relative'
   }
 };
