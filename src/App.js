@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { Search, Plus, Filter, BarChart3, FileText, DollarSign, AlertCircle, Calendar, User, Download } from 'lucide-react';
 
 // 模拟数据
@@ -315,15 +315,214 @@ const styles = {
   }
 };
 
+// 独立的表单组件 - 解决输入框失焦问题
+const FormModal = React.memo(({ 
+  showForm, 
+  formData, 
+  onClose, 
+  onSave, 
+  onChange 
+}) => {
+  if (!showForm) return null;
+
+  return (
+    <div style={styles.modal} onClick={onClose}>
+      <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <div style={styles.modalHeader}>
+          <h2 style={{fontSize: '20px', fontWeight: 'bold', margin: 0}}>
+            {formData.id ? '编辑合同' : '新增合同'}
+          </h2>
+        </div>
+        
+        <div style={styles.modalBody}>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px'}}>
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同编号 *</label>
+              <input
+                type="text"
+                style={{...styles.input, width: '100%'}}
+                value={formData.contractNo || ''}
+                onChange={(e) => onChange('contractNo', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同名称 *</label>
+              <input
+                type="text"
+                style={{...styles.input, width: '100%'}}
+                value={formData.contractName || ''}
+                onChange={(e) => onChange('contractName', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同类别 *</label>
+              <select
+                style={{...styles.select, width: '100%'}}
+                value={formData.type || '采购'}
+                onChange={(e) => onChange('type', e.target.value)}
+              >
+                <option>采购</option>
+                <option>销售</option>
+              </select>
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>相对方 *</label>
+              <input
+                type="text"
+                style={{...styles.input, width: '100%'}}
+                value={formData.counterparty || ''}
+                onChange={(e) => onChange('counterparty', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同金额 *</label>
+              <input
+                type="number"
+                style={{...styles.input, width: '100%'}}
+                value={formData.totalAmount || ''}
+                onChange={(e) => onChange('totalAmount', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同状态 *</label>
+              <select
+                style={{...styles.select, width: '100%'}}
+                value={formData.status || '未开始'}
+                onChange={(e) => onChange('status', e.target.value)}
+              >
+                <option>未开始</option>
+                <option>履行中</option>
+                <option>已完结</option>
+                <option>终止</option>
+              </select>
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>签订日期 *</label>
+              <input
+                type="date"
+                style={{...styles.input, width: '100%'}}
+                value={formData.signDate || ''}
+                onChange={(e) => onChange('signDate', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>生效日期 *</label>
+              <input
+                type="date"
+                style={{...styles.input, width: '100%'}}
+                value={formData.startDate || ''}
+                onChange={(e) => onChange('startDate', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>结束日期</label>
+              <input
+                type="date"
+                style={{...styles.input, width: '100%'}}
+                value={formData.endDate || ''}
+                onChange={(e) => onChange('endDate', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>交付日期</label>
+              <input
+                type="date"
+                style={{...styles.input, width: '100%'}}
+                value={formData.deliveryDate || ''}
+                onChange={(e) => onChange('deliveryDate', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>经办人 *</label>
+              <input
+                type="text"
+                style={{...styles.input, width: '100%'}}
+                value={formData.responsiblePerson || ''}
+                onChange={(e) => onChange('responsiblePerson', e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>归属部门 *</label>
+              <input
+                type="text"
+                style={{...styles.input, width: '100%'}}
+                value={formData.department || ''}
+                onChange={(e) => onChange('department', e.target.value)}
+              />
+            </div>
+            
+            <div style={{gridColumn: '1 / -1'}}>
+              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>结算方式</label>
+              <input
+                type="text"
+                style={{...styles.input, width: '100%'}}
+                value={formData.paymentMethod || ''}
+                onChange={(e) => onChange('paymentMethod', e.target.value)}
+                placeholder="如：分期付款、验收后付款等"
+              />
+            </div>
+          </div>
+        </div>
+        
+        <div style={styles.modalFooter}>
+          <button
+            onClick={onClose}
+            style={{padding: '8px 16px', border: '1px solid #d1d5db', borderRadius: '8px', backgroundColor: '#ffffff', cursor: 'pointer'}}
+          >
+            取消
+          </button>
+          <button
+            onClick={onSave}
+            style={styles.button}
+          >
+            保存
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+});
+
 const App = () => {
+  // 从 localStorage 加载数据（如果存在）
+  const loadContracts = () => {
+    try {
+      const saved = localStorage.getItem('contracts');
+      return saved ? JSON.parse(saved) : initialContracts;
+    } catch (error) {
+      console.log('localStorage not available, using initial data');
+      return initialContracts;
+    }
+  };
+
   const [currentView, setCurrentView] = useState('dashboard');
-  const [contracts, setContracts] = useState(initialContracts);
+  const [contracts, setContracts] = useState(loadContracts);
   const [selectedContract, setSelectedContract] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState('全部');
   const [filterStatus, setFilterStatus] = useState('全部');
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({});
+
+  // 保存数据到 localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('contracts', JSON.stringify(contracts));
+    } catch (error) {
+      console.log('localStorage not available');
+    }
+  }, [contracts]);
 
   const statistics = useMemo(() => {
     const totalContracts = contracts.length;
@@ -383,21 +582,49 @@ const App = () => {
       : { backgroundColor: '#d1fae5', color: '#065f46' };
   };
 
-  const handleSaveContract = () => {
-    if (formData.id) {
-      setContracts(contracts.map(c => c.id === formData.id ? formData : c));
-    } else {
-      const newContract = {
-        ...formData,
-        id: Math.max(...contracts.map(c => c.id)) + 1,
-        paidAmount: 0,
-        invoicedAmount: 0
-      };
-      setContracts([...contracts, newContract]);
-    }
+  // 使用 useCallback 确保函数引用稳定
+  const handleFormChange = useCallback((field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  }, []);
+
+  const handleCloseForm = useCallback(() => {
     setShowForm(false);
     setFormData({});
-  };
+  }, []);
+
+  const handleSaveContract = useCallback(() => {
+    // 验证必填字段
+    if (!formData.contractNo || !formData.contractName || !formData.counterparty || 
+        !formData.totalAmount || !formData.signDate || !formData.startDate || 
+        !formData.responsiblePerson || !formData.department) {
+      alert('请填写所有必填字段（标记*的字段）');
+      return;
+    }
+
+    if (formData.id) {
+      // 编辑现有合同
+      setContracts(prev => prev.map(c => c.id === formData.id ? {
+        ...formData,
+        totalAmount: Number(formData.totalAmount)
+      } : c));
+    } else {
+      // 新增合同
+      const newContract = {
+        ...formData,
+        id: contracts.length > 0 ? Math.max(...contracts.map(c => c.id)) + 1 : 1,
+        paidAmount: 0,
+        invoicedAmount: 0,
+        totalAmount: Number(formData.totalAmount)
+      };
+      setContracts(prev => [...prev, newContract]);
+    }
+    
+    setShowForm(false);
+    setFormData({});
+  }, [formData, contracts]);
 
   const DashboardView = () => (
     <div>
@@ -780,179 +1007,6 @@ const App = () => {
     );
   };
 
-  const FormModal = () => {
-    if (!showForm) return null;
-
-    return (
-      <div style={styles.modal} onClick={() => {setShowForm(false); setFormData({});}}>
-        <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-          <div style={styles.modalHeader}>
-            <h2 style={{fontSize: '20px', fontWeight: 'bold', margin: 0}}>{formData.id ? '编辑合同' : '新增合同'}</h2>
-          </div>
-          
-          <div style={styles.modalBody}>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px'}}>
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同编号 *</label>
-                <input
-                  type="text"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.contractNo || ''}
-                  onChange={(e) => setFormData({...formData, contractNo: e.target.value})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同名称 *</label>
-                <input
-                  type="text"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.contractName || ''}
-                  onChange={(e) => setFormData({...formData, contractName: e.target.value})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同类别 *</label>
-                <select
-                  style={{...styles.select, width: '100%'}}
-                  value={formData.type || '采购'}
-                  onChange={(e) => setFormData({...formData, type: e.target.value})}
-                >
-                  <option>采购</option>
-                  <option>销售</option>
-                </select>
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>相对方 *</label>
-                <input
-                  type="text"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.counterparty || ''}
-                  onChange={(e) => setFormData({...formData, counterparty: e.target.value})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同金额 *</label>
-                <input
-                  type="number"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.totalAmount || ''}
-                  onChange={(e) => setFormData({...formData, totalAmount: parseFloat(e.target.value) || 0})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同状态 *</label>
-                <select
-                  style={{...styles.select, width: '100%'}}
-                  value={formData.status || '未开始'}
-                  onChange={(e) => setFormData({...formData, status: e.target.value})}
-                >
-                  <option>未开始</option>
-                  <option>履行中</option>
-                  <option>已完结</option>
-                  <option>终止</option>
-                </select>
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>签订日期 *</label>
-                <input
-                  type="date"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.signDate || ''}
-                  onChange={(e) => setFormData({...formData, signDate: e.target.value})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>生效日期 *</label>
-                <input
-                  type="date"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.startDate || ''}
-                  onChange={(e) => setFormData({...formData, startDate: e.target.value})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>结束日期</label>
-                <input
-                  type="date"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.endDate || ''}
-                  onChange={(e) => setFormData({...formData, endDate: e.target.value})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>交付日期</label>
-                <input
-                  type="date"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.deliveryDate || ''}
-                  onChange={(e) => setFormData({...formData, deliveryDate: e.target.value})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>经办人 *</label>
-                <input
-                  type="text"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.responsiblePerson || ''}
-                  onChange={(e) => setFormData({...formData, responsiblePerson: e.target.value})}
-                />
-              </div>
-              
-              <div>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>归属部门 *</label>
-                <input
-                  type="text"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.department || ''}
-                  onChange={(e) => setFormData({...formData, department: e.target.value})}
-                />
-              </div>
-              
-              <div style={{gridColumn: '1 / -1'}}>
-                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>结算方式</label>
-                <input
-                  type="text"
-                  style={{...styles.input, width: '100%'}}
-                  value={formData.paymentMethod || ''}
-                  onChange={(e) => setFormData({...formData, paymentMethod: e.target.value})}
-                  placeholder="如：分期付款、验收后付款等"
-                />
-              </div>
-            </div>
-          </div>
-          
-          <div style={styles.modalFooter}>
-            <button
-              onClick={() => {
-                setShowForm(false);
-                setFormData({});
-              }}
-              style={{padding: '8px 16px', border: '1px solid #d1d5db', borderRadius: '8px', backgroundColor: '#ffffff', cursor: 'pointer'}}
-            >
-              取消
-            </button>
-            <button
-              onClick={handleSaveContract}
-              style={styles.button}
-            >
-              保存
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div style={styles.page}>
       <header style={styles.header}>
@@ -996,7 +1050,13 @@ const App = () => {
         {currentView === 'detail' && <ContractDetailView />}
       </main>
 
-      <FormModal />
+      <FormModal
+        showForm={showForm}
+        formData={formData}
+        onClose={handleCloseForm}
+        onSave={handleSaveContract}
+        onChange={handleFormChange}
+      />
     </div>
   );
 };
