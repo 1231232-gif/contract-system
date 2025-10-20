@@ -95,6 +95,226 @@ const initialContracts = [
   }
 ];
 
+const styles = {
+  page: {
+    minHeight: '100vh',
+    backgroundColor: '#f3f4f6',
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+  },
+  header: {
+    backgroundColor: '#ffffff',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+    padding: '16px 32px'
+  },
+  headerContent: {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: '#111827',
+    margin: 0
+  },
+  userInfo: {
+    fontSize: '14px',
+    color: '#6b7280',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px'
+  },
+  nav: {
+    backgroundColor: '#ffffff',
+    borderBottom: '1px solid #e5e7eb'
+  },
+  navContent: {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: '0 32px',
+    display: 'flex',
+    gap: '32px'
+  },
+  navButton: {
+    padding: '16px 8px',
+    background: 'none',
+    border: 'none',
+    borderBottom: '2px solid transparent',
+    cursor: 'pointer',
+    fontSize: '14px',
+    fontWeight: '500',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    transition: 'all 0.2s'
+  },
+  navButtonActive: {
+    color: '#2563eb',
+    borderBottomColor: '#2563eb'
+  },
+  navButtonInactive: {
+    color: '#6b7280'
+  },
+  main: {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: '24px 32px'
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: '8px',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+    padding: '24px'
+  },
+  grid: {
+    display: 'grid',
+    gap: '16px',
+    marginBottom: '24px'
+  },
+  grid4: {
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'
+  },
+  grid2: {
+    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))'
+  },
+  statCard: {
+    backgroundColor: '#ffffff',
+    padding: '24px',
+    borderRadius: '8px',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  statLabel: {
+    fontSize: '14px',
+    color: '#6b7280',
+    marginBottom: '8px'
+  },
+  statValue: {
+    fontSize: '30px',
+    fontWeight: 'bold',
+    color: '#111827'
+  },
+  button: {
+    padding: '8px 16px',
+    backgroundColor: '#2563eb',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontSize: '14px',
+    fontWeight: '500',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    transition: 'background-color 0.2s'
+  },
+  input: {
+    padding: '8px 12px',
+    border: '1px solid #d1d5db',
+    borderRadius: '8px',
+    fontSize: '14px',
+    outline: 'none',
+    transition: 'border-color 0.2s'
+  },
+  select: {
+    padding: '8px 12px',
+    border: '1px solid #d1d5db',
+    borderRadius: '8px',
+    fontSize: '14px',
+    backgroundColor: '#ffffff',
+    cursor: 'pointer',
+    outline: 'none'
+  },
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse'
+  },
+  th: {
+    padding: '12px 16px',
+    textAlign: 'left',
+    fontSize: '14px',
+    fontWeight: '600',
+    color: '#374151',
+    backgroundColor: '#f9fafb',
+    borderBottom: '1px solid #e5e7eb'
+  },
+  td: {
+    padding: '12px 16px',
+    fontSize: '14px',
+    borderBottom: '1px solid #e5e7eb'
+  },
+  badge: {
+    display: 'inline-block',
+    padding: '4px 8px',
+    borderRadius: '4px',
+    fontSize: '12px',
+    fontWeight: '500'
+  },
+  progressBar: {
+    width: '100%',
+    height: '8px',
+    backgroundColor: '#e5e7eb',
+    borderRadius: '4px',
+    overflow: 'hidden'
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: '#2563eb',
+    transition: 'width 0.3s'
+  },
+  modal: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '16px',
+    zIndex: 1000
+  },
+  modalContent: {
+    backgroundColor: '#ffffff',
+    borderRadius: '8px',
+    maxWidth: '900px',
+    width: '100%',
+    maxHeight: '90vh',
+    overflow: 'auto',
+    boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)'
+  },
+  modalHeader: {
+    padding: '24px',
+    borderBottom: '1px solid #e5e7eb'
+  },
+  modalBody: {
+    padding: '24px'
+  },
+  modalFooter: {
+    padding: '24px',
+    borderTop: '1px solid #e5e7eb',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: '12px'
+  },
+  searchBar: {
+    display: 'flex',
+    gap: '16px',
+    marginBottom: '16px',
+    flexWrap: 'wrap'
+  },
+  searchInput: {
+    flex: 1,
+    minWidth: '250px',
+    position: 'relative'
+  }
+};
+
 const App = () => {
   const [currentView, setCurrentView] = useState('dashboard');
   const [contracts, setContracts] = useState(initialContracts);
@@ -105,7 +325,6 @@ const App = () => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({});
 
-  // 统计数据
   const statistics = useMemo(() => {
     const totalContracts = contracts.length;
     const activeContracts = contracts.filter(c => c.status === '履行中').length;
@@ -126,7 +345,6 @@ const App = () => {
     };
   }, [contracts]);
 
-  // 过滤合同
   const filteredContracts = useMemo(() => {
     return contracts.filter(contract => {
       const matchesSearch = 
@@ -141,34 +359,34 @@ const App = () => {
     });
   }, [contracts, searchTerm, filterType, filterStatus]);
 
-  // 格式化金额
   const formatCurrency = (amount) => {
     return `¥${amount.toLocaleString('zh-CN')}`;
   };
 
-  // 计算付款进度
   const getPaymentProgress = (contract) => {
     return contract.totalAmount > 0 ? (contract.paidAmount / contract.totalAmount * 100).toFixed(1) : 0;
   };
 
-  // 获取状态颜色
-  const getStatusColor = (status) => {
-    const colors = {
-      '未开始': 'bg-gray-100 text-gray-800',
-      '履行中': 'bg-blue-100 text-blue-800',
-      '已完结': 'bg-green-100 text-green-800',
-      '终止': 'bg-red-100 text-red-800'
+  const getStatusStyle = (status) => {
+    const statusStyles = {
+      '未开始': { backgroundColor: '#f3f4f6', color: '#374151' },
+      '履行中': { backgroundColor: '#dbeafe', color: '#1e40af' },
+      '已完结': { backgroundColor: '#d1fae5', color: '#065f46' },
+      '终止': { backgroundColor: '#fee2e2', color: '#991b1b' }
     };
-    return colors[status] || 'bg-gray-100 text-gray-800';
+    return statusStyles[status] || statusStyles['未开始'];
   };
 
-  // 新增或编辑合同
+  const getTypeStyle = (type) => {
+    return type === '采购' 
+      ? { backgroundColor: '#f3e8ff', color: '#6b21a8' }
+      : { backgroundColor: '#d1fae5', color: '#065f46' };
+  };
+
   const handleSaveContract = () => {
     if (formData.id) {
-      // 编辑
       setContracts(contracts.map(c => c.id === formData.id ? formData : c));
     } else {
-      // 新增
       const newContract = {
         ...formData,
         id: Math.max(...contracts.map(c => c.id)) + 1,
@@ -181,91 +399,83 @@ const App = () => {
     setFormData({});
   };
 
-  // 仪表盘视图
   const DashboardView = () => (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <div className="flex items-center justify-between">
+    <div>
+      <div style={styles.grid}>
+        <div style={{...styles.grid, ...styles.grid4}}>
+          <div style={styles.statCard}>
             <div>
-              <p className="text-gray-500 text-sm">合同总数</p>
-              <p className="text-3xl font-bold text-gray-900 mt-2">{statistics.totalContracts}</p>
+              <p style={styles.statLabel}>合同总数</p>
+              <p style={styles.statValue}>{statistics.totalContracts}</p>
             </div>
-            <FileText className="text-blue-500" size={40} />
+            <FileText color="#3b82f6" size={40} />
           </div>
-        </div>
-        
-        <div className="bg-white p-6 rounded-lg shadow">
-          <div className="flex items-center justify-between">
+          
+          <div style={styles.statCard}>
             <div>
-              <p className="text-gray-500 text-sm">履行中合同</p>
-              <p className="text-3xl font-bold text-green-600 mt-2">{statistics.activeContracts}</p>
+              <p style={styles.statLabel}>履行中合同</p>
+              <p style={{...styles.statValue, color: '#059669'}}>{statistics.activeContracts}</p>
             </div>
-            <BarChart3 className="text-green-500" size={40} />
+            <BarChart3 color="#10b981" size={40} />
           </div>
-        </div>
-        
-        <div className="bg-white p-6 rounded-lg shadow">
-          <div className="flex items-center justify-between">
+          
+          <div style={styles.statCard}>
             <div>
-              <p className="text-gray-500 text-sm">合同总金额</p>
-              <p className="text-2xl font-bold text-gray-900 mt-2">{formatCurrency(statistics.totalAmount)}</p>
+              <p style={styles.statLabel}>合同总金额</p>
+              <p style={{...styles.statValue, fontSize: '20px'}}>{formatCurrency(statistics.totalAmount)}</p>
             </div>
-            <DollarSign className="text-yellow-500" size={40} />
+            <DollarSign color="#eab308" size={40} />
           </div>
-        </div>
-        
-        <div className="bg-white p-6 rounded-lg shadow">
-          <div className="flex items-center justify-between">
+          
+          <div style={styles.statCard}>
             <div>
-              <p className="text-gray-500 text-sm">待收/待付款</p>
-              <p className="text-2xl font-bold text-orange-600 mt-2">{formatCurrency(statistics.unpaidAmount)}</p>
+              <p style={styles.statLabel}>待收/待付款</p>
+              <p style={{...styles.statValue, color: '#ea580c', fontSize: '20px'}}>{formatCurrency(statistics.unpaidAmount)}</p>
             </div>
-            <AlertCircle className="text-orange-500" size={40} />
+            <AlertCircle color="#f97316" size={40} />
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold mb-4">财务概览</h3>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center pb-3 border-b">
-              <span className="text-gray-600">应收账款（销售）</span>
-              <span className="text-lg font-semibold text-green-600">{formatCurrency(statistics.receivables)}</span>
+      <div style={{...styles.grid, ...styles.grid2}}>
+        <div style={styles.card}>
+          <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '16px'}}>财务概览</h3>
+          <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #e5e7eb'}}>
+              <span style={{color: '#6b7280'}}>应收账款（销售）</span>
+              <span style={{fontSize: '18px', fontWeight: '600', color: '#059669'}}>{formatCurrency(statistics.receivables)}</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b">
-              <span className="text-gray-600">应付账款（采购）</span>
-              <span className="text-lg font-semibold text-red-600">{formatCurrency(statistics.payables)}</span>
+            <div style={{display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #e5e7eb'}}>
+              <span style={{color: '#6b7280'}}>应付账款（采购）</span>
+              <span style={{fontSize: '18px', fontWeight: '600', color: '#dc2626'}}>{formatCurrency(statistics.payables)}</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">已付款/已收款</span>
-              <span className="text-lg font-semibold text-blue-600">{formatCurrency(statistics.paidAmount)}</span>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+              <span style={{color: '#6b7280'}}>已付款/已收款</span>
+              <span style={{fontSize: '18px', fontWeight: '600', color: '#2563eb'}}>{formatCurrency(statistics.paidAmount)}</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold mb-4">合同状态分布</h3>
-          <div className="space-y-3">
+        <div style={styles.card}>
+          <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '16px'}}>合同状态分布</h3>
+          <div style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
             {['未开始', '履行中', '已完结', '终止'].map(status => {
               const count = contracts.filter(c => c.status === status).length;
               const percentage = ((count / statistics.totalContracts) * 100).toFixed(0);
+              const colors = {
+                '未开始': '#9ca3af',
+                '履行中': '#3b82f6',
+                '已完结': '#10b981',
+                '终止': '#ef4444'
+              };
               return (
                 <div key={status}>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-600">{status}</span>
-                    <span className="font-medium">{count} ({percentage}%)</span>
+                  <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '4px'}}>
+                    <span style={{color: '#6b7280'}}>{status}</span>
+                    <span style={{fontWeight: '500'}}>{count} ({percentage}%)</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className={`h-2 rounded-full ${
-                        status === '未开始' ? 'bg-gray-400' :
-                        status === '履行中' ? 'bg-blue-500' :
-                        status === '已完结' ? 'bg-green-500' : 'bg-red-500'
-                      }`}
-                      style={{ width: `${percentage}%` }}
-                    />
+                  <div style={styles.progressBar}>
+                    <div style={{...styles.progressFill, width: `${percentage}%`, backgroundColor: colors[status]}} />
                   </div>
                 </div>
               );
@@ -274,25 +484,25 @@ const App = () => {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h3 className="text-lg font-semibold mb-4">近期到期合同提醒</h3>
-        <div className="space-y-3">
+      <div style={styles.card}>
+        <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '16px'}}>近期到期合同提醒</h3>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
           {contracts
             .filter(c => c.status === '履行中')
             .sort((a, b) => new Date(a.endDate) - new Date(b.endDate))
             .slice(0, 5)
             .map(contract => (
-              <div key={contract.id} className="flex items-center justify-between p-3 bg-yellow-50 rounded border-l-4 border-yellow-400">
-                <div className="flex items-center gap-3">
-                  <AlertCircle className="text-yellow-600" size={20} />
+              <div key={contract.id} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', backgroundColor: '#fef3c7', borderLeft: '4px solid #f59e0b', borderRadius: '4px'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+                  <AlertCircle color="#d97706" size={20} />
                   <div>
-                    <p className="font-medium">{contract.contractName}</p>
-                    <p className="text-sm text-gray-600">{contract.counterparty}</p>
+                    <p style={{fontWeight: '500', marginBottom: '4px'}}>{contract.contractName}</p>
+                    <p style={{fontSize: '14px', color: '#6b7280'}}>{contract.counterparty}</p>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-sm font-medium">到期日期</p>
-                  <p className="text-sm text-gray-600">{contract.endDate}</p>
+                <div style={{textAlign: 'right'}}>
+                  <p style={{fontSize: '14px', fontWeight: '500', marginBottom: '4px'}}>到期日期</p>
+                  <p style={{fontSize: '14px', color: '#6b7280'}}>{contract.endDate}</p>
                 </div>
               </div>
             ))}
@@ -301,36 +511,29 @@ const App = () => {
     </div>
   );
 
-  // 合同列表视图
   const ContractListView = () => (
-    <div className="space-y-4">
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex-1 relative">
-          <Search className="absolute left-3 top-3 text-gray-400" size={20} />
-          <input
-            type="text"
-            placeholder="搜索合同编号、名称或相对方..."
-            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+    <div>
+      <div style={styles.searchBar}>
+        <div style={styles.searchInput}>
+          <div style={{position: 'relative'}}>
+            <Search style={{position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af'}} size={20} />
+            <input
+              type="text"
+              placeholder="搜索合同编号、名称或相对方..."
+              style={{...styles.input, width: '100%', paddingLeft: '40px'}}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
         </div>
         
-        <select
-          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={filterType}
-          onChange={(e) => setFilterType(e.target.value)}
-        >
+        <select style={styles.select} value={filterType} onChange={(e) => setFilterType(e.target.value)}>
           <option>全部</option>
           <option>采购</option>
           <option>销售</option>
         </select>
         
-        <select
-          className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-        >
+        <select style={styles.select} value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
           <option>全部</option>
           <option>未开始</option>
           <option>履行中</option>
@@ -357,65 +560,66 @@ const App = () => {
             });
             setShowForm(true);
           }}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2 whitespace-nowrap"
+          style={styles.button}
+          onMouseOver={(e) => e.target.style.backgroundColor = '#1d4ed8'}
+          onMouseOut={(e) => e.target.style.backgroundColor = '#2563eb'}
         >
           <Plus size={20} />
           新增合同
         </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-gray-50">
+      <div style={styles.card}>
+        <div style={{overflowX: 'auto'}}>
+          <table style={styles.table}>
+            <thead>
               <tr>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">合同编号</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">合同名称</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">类别</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">相对方</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">合同金额</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">付款进度</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">状态</th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">操作</th>
+                <th style={styles.th}>合同编号</th>
+                <th style={styles.th}>合同名称</th>
+                <th style={styles.th}>类别</th>
+                <th style={styles.th}>相对方</th>
+                <th style={styles.th}>合同金额</th>
+                <th style={styles.th}>付款进度</th>
+                <th style={styles.th}>状态</th>
+                <th style={styles.th}>操作</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody>
               {filteredContracts.map((contract) => (
-                <tr key={contract.id} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 text-sm font-medium text-blue-600">{contract.contractNo}</td>
-                  <td className="px-4 py-3 text-sm">{contract.contractName}</td>
-                  <td className="px-4 py-3 text-sm">
-                    <span className={`px-2 py-1 rounded text-xs ${
-                      contract.type === '采购' ? 'bg-purple-100 text-purple-800' : 'bg-green-100 text-green-800'
-                    }`}>
+                <tr key={contract.id} style={{transition: 'background-color 0.2s'}}
+                    onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+                    onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}>
+                  <td style={{...styles.td, fontWeight: '500', color: '#2563eb'}}>{contract.contractNo}</td>
+                  <td style={styles.td}>{contract.contractName}</td>
+                  <td style={styles.td}>
+                    <span style={{...styles.badge, ...getTypeStyle(contract.type)}}>
                       {contract.type}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm">{contract.counterparty}</td>
-                  <td className="px-4 py-3 text-sm font-medium">{formatCurrency(contract.totalAmount)}</td>
-                  <td className="px-4 py-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="bg-blue-600 h-2 rounded-full"
-                          style={{ width: `${getPaymentProgress(contract)}%` }}
-                        />
+                  <td style={styles.td}>{contract.counterparty}</td>
+                  <td style={{...styles.td, fontWeight: '500'}}>{formatCurrency(contract.totalAmount)}</td>
+                  <td style={styles.td}>
+                    <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                      <div style={{flex: 1, ...styles.progressBar}}>
+                        <div style={{...styles.progressFill, width: `${getPaymentProgress(contract)}%`}} />
                       </div>
-                      <span className="text-xs font-medium">{getPaymentProgress(contract)}%</span>
+                      <span style={{fontSize: '12px', fontWeight: '500'}}>{getPaymentProgress(contract)}%</span>
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-sm">
-                    <span className={`px-2 py-1 rounded text-xs ${getStatusColor(contract.status)}`}>
+                  <td style={styles.td}>
+                    <span style={{...styles.badge, ...getStatusStyle(contract.status)}}>
                       {contract.status}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm">
+                  <td style={styles.td}>
                     <button
                       onClick={() => {
                         setSelectedContract(contract);
                         setCurrentView('detail');
                       }}
-                      className="text-blue-600 hover:text-blue-800"
+                      style={{color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px'}}
+                      onMouseOver={(e) => e.target.style.color = '#1d4ed8'}
+                      onMouseOut={(e) => e.target.style.color = '#2563eb'}
                     >
                       查看
                     </button>
@@ -427,8 +631,8 @@ const App = () => {
         </div>
         
         {filteredContracts.length === 0 && (
-          <div className="text-center py-12 text-gray-500">
-            <FileText size={48} className="mx-auto mb-3 opacity-50" />
+          <div style={{textAlign: 'center', padding: '48px', color: '#6b7280'}}>
+            <FileText size={48} style={{margin: '0 auto 12px', opacity: 0.5}} />
             <p>暂无符合条件的合同</p>
           </div>
         )}
@@ -436,16 +640,15 @@ const App = () => {
     </div>
   );
 
-  // 合同详情视图
   const ContractDetailView = () => {
     if (!selectedContract) return null;
     
     return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
+      <div>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px'}}>
           <button
             onClick={() => setCurrentView('list')}
-            className="text-blue-600 hover:text-blue-800"
+            style={{color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px'}}
           >
             ← 返回列表
           </button>
@@ -454,95 +657,96 @@ const App = () => {
               setFormData(selectedContract);
               setShowForm(true);
             }}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            style={styles.button}
           >
             编辑合同
           </button>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
-          <div className="border-b pb-4 mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">{selectedContract.contractName}</h2>
-            <p className="text-gray-600 mt-1">合同编号：{selectedContract.contractNo}</p>
+        <div style={styles.card}>
+          <div style={{borderBottom: '1px solid #e5e7eb', paddingBottom: '16px', marginBottom: '24px'}}>
+            <h2 style={{fontSize: '24px', fontWeight: 'bold', marginBottom: '4px'}}>{selectedContract.contractName}</h2>
+            <p style={{color: '#6b7280'}}>合同编号：{selectedContract.contractNo}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">基础信息</h3>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px'}}>
+            <div>
+              <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '16px'}}>基础信息</h3>
               
-              <div>
-                <p className="text-sm text-gray-600">合同类别</p>
-                <p className="font-medium mt-1">
-                  <span className={`px-2 py-1 rounded text-sm ${
-                    selectedContract.type === '采购' ? 'bg-purple-100 text-purple-800' : 'bg-green-100 text-green-800'
-                  }`}>
-                    {selectedContract.type}
-                  </span>
-                </p>
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>合同类别</p>
+                <span style={{...styles.badge, ...getTypeStyle(selectedContract.type)}}>
+                  {selectedContract.type}
+                </span>
               </div>
               
-              <div>
-                <p className="text-sm text-gray-600">相对方</p>
-                <p className="font-medium mt-1">{selectedContract.counterparty}</p>
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>相对方</p>
+                <p style={{fontWeight: '500'}}>{selectedContract.counterparty}</p>
               </div>
               
-              <div>
-                <p className="text-sm text-gray-600">合同状态</p>
-                <p className="font-medium mt-1">
-                  <span className={`px-2 py-1 rounded text-sm ${getStatusColor(selectedContract.status)}`}>
-                    {selectedContract.status}
-                  </span>
-                </p>
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>合同状态</p>
+                <span style={{...styles.badge, ...getStatusStyle(selectedContract.status)}}>
+                  {selectedContract.status}
+                </span>
               </div>
               
-              <div>
-                <p className="text-sm text-gray-600">经办人</p>
-                <p className="font-medium mt-1">{selectedContract.responsiblePerson}</p>
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>经办人</p>
+                <p style={{fontWeight: '500'}}>{selectedContract.responsiblePerson}</p>
               </div>
               
-              <div>
-                <p className="text-sm text-gray-600">归属部门</p>
-                <p className="font-medium mt-1">{selectedContract.department}</p>
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>归属部门</p>
+                <p style={{fontWeight: '500'}}>{selectedContract.department}</p>
               </div>
 
               <div>
-                <p className="text-sm text-gray-600">结算方式</p>
-                <p className="font-medium mt-1">{selectedContract.paymentMethod}</p>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>结算方式</p>
+                <p style={{fontWeight: '500'}}>{selectedContract.paymentMethod}</p>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">财务信息</h3>
+            <div>
+              <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '16px'}}>财务信息</h3>
               
-              <div>
-                <p className="text-sm text-gray-600">合同总金额</p>
-                <p className="text-xl font-bold text-gray-900 mt-1">{formatCurrency(selectedContract.totalAmount)}</p>
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>合同总金额</p>
+                <p style={{fontSize: '24px', fontWeight: 'bold'}}>{formatCurrency(selectedContract.totalAmount)}</p>
               </div>
               
-              <div>
-                <p className="text-sm text-gray-600">已付/已收金额</p>
-                <p className="text-lg font-semibold text-green-600 mt-1">{formatCurrency(selectedContract.paidAmount)}</p>
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>已付/已收金额</p>
+                <p style={{fontSize: '18px', fontWeight: '600', color: '#059669'}}>{formatCurrency(selectedContract.paidAmount)}</p>
               </div>
               
-              <div>
-                <p className="text-sm text-gray-600">待付/待收金额</p>
-                <p className="text-lg font-semibold text-orange-600 mt-1">
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>待付/待收金额</p>
+                <p style={{fontSize: '18px', fontWeight: '600', color: '#ea580c'}}>
                   {formatCurrency(selectedContract.totalAmount - selectedContract.paidAmount)}
                 </p>
               </div>
               
-              <div>
-                <p className="text-sm text-gray-600">已开票金额</p>
-                <p className="font-medium mt-1">{formatCurrency(selectedContract.invoicedAmount)}</p>
+              <div style={{marginBottom: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>已开票金额</p>
+                <p style={{fontWeight: '500'}}>{formatCurrency(selectedContract.invoicedAmount)}</p>
               </div>
               
-              <div className="pt-4">
-                <p className="text-sm text-gray-600 mb-2">付款进度</p>
-                <div className="w-full bg-gray-200 rounded-full h-4">
-                  <div 
-                    className="bg-blue-600 h-4 rounded-full flex items-center justify-center text-white text-xs font-medium"
-                    style={{ width: `${getPaymentProgress(selectedContract)}%` }}
-                  >
+              <div style={{paddingTop: '16px'}}>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '8px'}}>付款进度</p>
+                <div style={{...styles.progressBar, height: '16px'}}>
+                  <div style={{
+                    ...styles.progressFill, 
+                    width: `${getPaymentProgress(selectedContract)}%`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#ffffff',
+                    fontSize: '12px',
+                    fontWeight: '500',
+                    height: '16px'
+                  }}>
                     {getPaymentProgress(selectedContract)}%
                   </div>
                 </div>
@@ -550,24 +754,24 @@ const App = () => {
             </div>
           </div>
 
-          <div className="mt-6 pt-6 border-t">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">时间节点</h3>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div style={{marginTop: '24px', paddingTop: '24px', borderTop: '1px solid #e5e7eb'}}>
+            <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '16px'}}>时间节点</h3>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px'}}>
               <div>
-                <p className="text-sm text-gray-600">签订日期</p>
-                <p className="font-medium mt-1">{selectedContract.signDate}</p>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>签订日期</p>
+                <p style={{fontWeight: '500'}}>{selectedContract.signDate}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">生效日期</p>
-                <p className="font-medium mt-1">{selectedContract.startDate}</p>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>生效日期</p>
+                <p style={{fontWeight: '500'}}>{selectedContract.startDate}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">交付日期</p>
-                <p className="font-medium mt-1">{selectedContract.deliveryDate}</p>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>交付日期</p>
+                <p style={{fontWeight: '500'}}>{selectedContract.deliveryDate}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">结束日期</p>
-                <p className="font-medium mt-1">{selectedContract.endDate}</p>
+                <p style={{fontSize: '14px', color: '#6b7280', marginBottom: '4px'}}>结束日期</p>
+                <p style={{fontWeight: '500'}}>{selectedContract.endDate}</p>
               </div>
             </div>
           </div>
@@ -576,43 +780,42 @@ const App = () => {
     );
   };
 
-  // 表单弹窗
   const FormModal = () => {
     if (!showForm) return null;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-        <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-          <div className="p-6 border-b">
-            <h2 className="text-xl font-bold">{formData.id ? '编辑合同' : '新增合同'}</h2>
+      <div style={styles.modal} onClick={() => {setShowForm(false); setFormData({});}}>
+        <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+          <div style={styles.modalHeader}>
+            <h2 style={{fontSize: '20px', fontWeight: 'bold', margin: 0}}>{formData.id ? '编辑合同' : '新增合同'}</h2>
           </div>
           
-          <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div style={styles.modalBody}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px'}}>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">合同编号 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同编号 *</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.contractNo || ''}
                   onChange={(e) => setFormData({...formData, contractNo: e.target.value})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">合同名称 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同名称 *</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.contractName || ''}
                   onChange={(e) => setFormData({...formData, contractName: e.target.value})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">合同类别 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同类别 *</label>
                 <select
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.select, width: '100%'}}
                   value={formData.type || '采购'}
                   onChange={(e) => setFormData({...formData, type: e.target.value})}
                 >
@@ -622,29 +825,29 @@ const App = () => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">相对方 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>相对方 *</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.counterparty || ''}
                   onChange={(e) => setFormData({...formData, counterparty: e.target.value})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">合同金额 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同金额 *</label>
                 <input
                   type="number"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.totalAmount || ''}
                   onChange={(e) => setFormData({...formData, totalAmount: parseFloat(e.target.value) || 0})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">合同状态 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同状态 *</label>
                 <select
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.select, width: '100%'}}
                   value={formData.status || '未开始'}
                   onChange={(e) => setFormData({...formData, status: e.target.value})}
                 >
@@ -656,70 +859,70 @@ const App = () => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">签订日期 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>签订日期 *</label>
                 <input
                   type="date"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.signDate || ''}
                   onChange={(e) => setFormData({...formData, signDate: e.target.value})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">生效日期 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>生效日期 *</label>
                 <input
                   type="date"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.startDate || ''}
                   onChange={(e) => setFormData({...formData, startDate: e.target.value})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">结束日期</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>结束日期</label>
                 <input
                   type="date"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.endDate || ''}
                   onChange={(e) => setFormData({...formData, endDate: e.target.value})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">交付日期</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>交付日期</label>
                 <input
                   type="date"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.deliveryDate || ''}
                   onChange={(e) => setFormData({...formData, deliveryDate: e.target.value})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">经办人 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>经办人 *</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.responsiblePerson || ''}
                   onChange={(e) => setFormData({...formData, responsiblePerson: e.target.value})}
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">归属部门 *</label>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>归属部门 *</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.department || ''}
                   onChange={(e) => setFormData({...formData, department: e.target.value})}
                 />
               </div>
               
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">结算方式</label>
+              <div style={{gridColumn: '1 / -1'}}>
+                <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>结算方式</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  style={{...styles.input, width: '100%'}}
                   value={formData.paymentMethod || ''}
                   onChange={(e) => setFormData({...formData, paymentMethod: e.target.value})}
                   placeholder="如：分期付款、验收后付款等"
@@ -728,19 +931,19 @@ const App = () => {
             </div>
           </div>
           
-          <div className="p-6 border-t flex justify-end gap-3">
+          <div style={styles.modalFooter}>
             <button
               onClick={() => {
                 setShowForm(false);
                 setFormData({});
               }}
-              className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+              style={{padding: '8px 16px', border: '1px solid #d1d5db', borderRadius: '8px', backgroundColor: '#ffffff', cursor: 'pointer'}}
             >
               取消
             </button>
             <button
               onClick={handleSaveContract}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              style={styles.button}
             >
               保存
             </button>
@@ -751,58 +954,48 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* 顶部导航 */}
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">合同台账管理系统</h1>
-            <div className="text-sm text-gray-600">
-              <User className="inline mr-1" size={16} />
-              管理员
-            </div>
+    <div style={styles.page}>
+      <header style={styles.header}>
+        <div style={styles.headerContent}>
+          <h1 style={styles.title}>合同台账管理系统</h1>
+          <div style={styles.userInfo}>
+            <User size={16} />
+            管理员
           </div>
         </div>
       </header>
 
-      {/* 主导航 */}
-      <nav className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex space-x-8">
-            <button
-              onClick={() => setCurrentView('dashboard')}
-              className={`py-4 px-2 border-b-2 font-medium text-sm ${
-                currentView === 'dashboard'
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              <BarChart3 className="inline mr-2" size={18} />
-              数据概览
-            </button>
-            <button
-              onClick={() => setCurrentView('list')}
-              className={`py-4 px-2 border-b-2 font-medium text-sm ${
-                currentView === 'list' || currentView === 'detail'
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              <FileText className="inline mr-2" size={18} />
-              合同列表
-            </button>
-          </div>
+      <nav style={styles.nav}>
+        <div style={styles.navContent}>
+          <button
+            onClick={() => setCurrentView('dashboard')}
+            style={{
+              ...styles.navButton,
+              ...(currentView === 'dashboard' ? styles.navButtonActive : styles.navButtonInactive)
+            }}
+          >
+            <BarChart3 size={18} />
+            数据概览
+          </button>
+          <button
+            onClick={() => setCurrentView('list')}
+            style={{
+              ...styles.navButton,
+              ...(currentView === 'list' || currentView === 'detail' ? styles.navButtonActive : styles.navButtonInactive)
+            }}
+          >
+            <FileText size={18} />
+            合同列表
+          </button>
         </div>
       </nav>
 
-      {/* 主内容区 */}
-      <main className="max-w-7xl mx-auto px-4 py-6">
+      <main style={styles.main}>
         {currentView === 'dashboard' && <DashboardView />}
         {currentView === 'list' && <ContractListView />}
         {currentView === 'detail' && <ContractDetailView />}
       </main>
 
-      {/* 表单弹窗 */}
       <FormModal />
     </div>
   );
