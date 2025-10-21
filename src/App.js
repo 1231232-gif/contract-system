@@ -199,19 +199,21 @@ const styles = {
     color: '#111827'
   },
   button: {
-    padding: '8px 16px',
-    backgroundColor: '#2563eb',
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontSize: '14px',
-    fontWeight: '500',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    transition: 'background-color 0.2s'
-  },
+  padding: '8px 16px',
+  backgroundColor: '#2563eb',
+  color: '#ffffff',
+  border: 'none',
+  borderRadius: '8px',
+  cursor: 'pointer',
+  fontSize: '14px',
+  fontWeight: '500',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+  transition: 'background-color 0.2s',
+  flex: '0 0 auto',     // 固定宽度，不参与收缩
+  whiteSpace: 'nowrap'  // 避免文字换行
+},
   input: {
     padding: '8px 12px',
     border: '1px solid #d1d5db',
@@ -221,16 +223,16 @@ const styles = {
     transition: 'border-color 0.2s'
   },
   select: {
-    padding: '8px 12px',
-    border: '1px solid #d1d5db',
-    borderRadius: '8px',
-    fontSize: '14px',
-    backgroundColor: '#ffffff',
-    cursor: 'pointer',
-    outline: 'none',
-    minWidth: '120px',
-    flexShrink: 0
-  },
+  padding: '8px 12px',
+  border: '1px solid #d1d5db',
+  borderRadius: '8px',
+  fontSize: '14px',
+  backgroundColor: '#ffffff',
+  cursor: 'pointer',
+  outline: 'none',
+  minWidth: '140px',
+  flex: '0 1 160px'     // 可缩放，必要时自动换行
+},
   table: {
     width: '100%',
     borderCollapse: 'collapse'
@@ -304,17 +306,20 @@ const styles = {
     justifyContent: 'flex-end',
     gap: '12px'
   },
- searchBar: {
-  display: 'grid',
-  gridTemplateColumns: 'minmax(260px, 1fr) repeat(2, minmax(140px, auto)) minmax(120px, auto)',
-  columnGap: '12px',
-  rowGap: '12px',
+searchBar: {
+  display: 'flex',
+  flexWrap: 'wrap',     // 宽度不足时自动换行
+  gap: '12px',
   marginBottom: '16px',
   alignItems: 'center'
 },
+
+// ✅ 搜索输入框外层：占据主要宽度
 searchInput: {
   position: 'relative',
-  width: '100%'
+  flex: '1 1 320px',    // 优先占满空间，最小宽度 320px
+  minWidth: '240px',    // 防止太窄
+  maxWidth: '100%'
 },
 
 
