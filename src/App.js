@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { Search, Plus, Filter, BarChart3, FileText, DollarSign, AlertCircle, Calendar, User, Download, Trash2 } from 'lucide-react';
+import { Search, Plus, BarChart3, FileText, DollarSign, AlertCircle, User } from 'lucide-react';
 
 const initialContracts = [
   {
@@ -206,11 +206,12 @@ const styles = {
     cursor: 'pointer',
     fontSize: '14px',
     fontWeight: '500',
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
     gap: '8px',
     transition: 'background-color 0.2s',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    flexShrink: 0
   },
   input: {
     padding: '8px 12px',
@@ -218,7 +219,9 @@ const styles = {
     borderRadius: '8px',
     fontSize: '14px',
     outline: 'none',
-    transition: 'border-color 0.2s'
+    transition: 'border-color 0.2s',
+    width: '100%',
+    boxSizing: 'border-box'
   },
   select: {
     padding: '8px 12px',
@@ -228,7 +231,8 @@ const styles = {
     backgroundColor: '#ffffff',
     cursor: 'pointer',
     outline: 'none',
-    minWidth: '100px'
+    width: '110px',
+    flexShrink: 0
   },
   table: {
     width: '100%',
@@ -302,17 +306,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-end',
     gap: '12px'
-  },
-  searchBar: {
-    display: 'flex',
-    gap: '12px',
-    marginBottom: '16px',
-    flexWrap: 'wrap',
-    alignItems: 'center'
-  },
-  searchInput: {
-    position: 'relative',
-    width: '220px'
   }
 };
 
@@ -334,7 +327,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同编号 *</label>
               <input
                 type="text"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.contractNo || ''}
                 onChange={(e) => onChange('contractNo', e.target.value)}
               />
@@ -344,7 +337,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同名称 *</label>
               <input
                 type="text"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.contractName || ''}
                 onChange={(e) => onChange('contractName', e.target.value)}
               />
@@ -353,7 +346,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
             <div>
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同类别 *</label>
               <select
-                style={{...styles.select, width: '100%'}}
+                style={{...styles.input, width: '100%'}}
                 value={formData.type || '采购'}
                 onChange={(e) => onChange('type', e.target.value)}
               >
@@ -366,7 +359,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>对方 *</label>
               <input
                 type="text"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.counterparty || ''}
                 onChange={(e) => onChange('counterparty', e.target.value)}
               />
@@ -376,7 +369,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同金额 *</label>
               <input
                 type="number"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.totalAmount || ''}
                 onChange={(e) => onChange('totalAmount', e.target.value)}
               />
@@ -385,7 +378,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
             <div>
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同状态 *</label>
               <select
-                style={{...styles.select, width: '100%'}}
+                style={{...styles.input, width: '100%'}}
                 value={formData.status || '未开始'}
                 onChange={(e) => onChange('status', e.target.value)}
               >
@@ -400,7 +393,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>签订日期 *</label>
               <input
                 type="date"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.signDate || ''}
                 onChange={(e) => onChange('signDate', e.target.value)}
               />
@@ -410,7 +403,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>生效日期 *</label>
               <input
                 type="date"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.startDate || ''}
                 onChange={(e) => onChange('startDate', e.target.value)}
               />
@@ -420,7 +413,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>结束日期</label>
               <input
                 type="date"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.endDate || ''}
                 onChange={(e) => onChange('endDate', e.target.value)}
               />
@@ -430,7 +423,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>交付日期</label>
               <input
                 type="date"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.deliveryDate || ''}
                 onChange={(e) => onChange('deliveryDate', e.target.value)}
               />
@@ -440,7 +433,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>经办人 *</label>
               <input
                 type="text"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.responsiblePerson || ''}
                 onChange={(e) => onChange('responsiblePerson', e.target.value)}
               />
@@ -450,7 +443,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>归属部门 *</label>
               <input
                 type="text"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.department || ''}
                 onChange={(e) => onChange('department', e.target.value)}
               />
@@ -460,7 +453,7 @@ const FormModal = React.memo(({ showForm, formData, onClose, onSave, onChange })
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>结算方式</label>
               <input
                 type="text"
-                style={{...styles.input, width: '100%'}}
+                style={styles.input}
                 value={formData.paymentMethod || ''}
                 onChange={(e) => onChange('paymentMethod', e.target.value)}
                 placeholder="如：分期付款、验收后付款等"
@@ -491,7 +484,6 @@ const App = () => {
       const saved = localStorage.getItem('contracts');
       return saved ? JSON.parse(saved) : initialContracts;
     } catch (error) {
-      console.log('localStorage not available');
       return initialContracts;
     }
   };
@@ -509,7 +501,7 @@ const App = () => {
     try {
       localStorage.setItem('contracts', JSON.stringify(contracts));
     } catch (error) {
-      console.log('localStorage not available');
+      console.log('localStorage error');
     }
   }, [contracts]);
 
@@ -732,13 +724,13 @@ const App = () => {
 
   const ContractListView = () => (
     <div>
-      <div style={styles.searchBar}>
-        <div style={styles.searchInput}>
-          <Search style={{position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af'}} size={20} />
+      <div style={{display: 'flex', gap: '12px', marginBottom: '16px', flexWrap: 'wrap', alignItems: 'center'}}>
+        <div style={{position: 'relative', width: '180px', flexShrink: 0}}>
+          <Search style={{position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af', pointerEvents: 'none'}} size={20} />
           <input
             type="text"
             placeholder="搜索合同..."
-            style={{...styles.input, width: '100%', paddingLeft: '40px'}}
+            style={{...styles.input, paddingLeft: '40px'}}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -829,13 +821,13 @@ const App = () => {
                     </span>
                   </td>
                   <td style={styles.td}>
-                    <div style={{display: 'flex', gap: '8px'}}>
+                    <div style={{display: 'flex', gap: '8px', whiteSpace: 'nowrap'}}>
                       <button
                         onClick={() => {
                           setSelectedContract(contract);
                           setCurrentView('detail');
                         }}
-                        style={{color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px'}}
+                        style={{color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px', padding: 0}}
                         onMouseOver={(e) => e.target.style.color = '#1d4ed8'}
                         onMouseOut={(e) => e.target.style.color = '#2563eb'}
                       >
@@ -844,7 +836,7 @@ const App = () => {
                       <span style={{color: '#d1d5db'}}>|</span>
                       <button
                         onClick={() => handleDeleteContract(contract)}
-                        style={{color: '#dc2626', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px'}}
+                        style={{color: '#dc2626', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px', padding: 0}}
                         onMouseOver={(e) => e.target.style.color = '#991b1b'}
                         onMouseOut={(e) => e.target.style.color = '#dc2626'}
                       >
@@ -873,10 +865,10 @@ const App = () => {
     
     return (
       <div>
-        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px'}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px'}}>
           <button
             onClick={() => setCurrentView('list')}
-            style={{color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px'}}
+            style={{color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px', padding: 0}}
           >
             ← 返回列表
           </button>
