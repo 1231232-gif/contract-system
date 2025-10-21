@@ -227,7 +227,9 @@ const styles = {
     fontSize: '14px',
     backgroundColor: '#ffffff',
     cursor: 'pointer',
-    outline: 'none'
+    outline: 'none',
+    minWidth: '120px',
+    flexShrink: 0
   },
   table: {
     width: '100%',
@@ -304,13 +306,14 @@ const styles = {
   },
   searchBar: {
     display: 'flex',
-    gap: '16px',
+    gap: '12px',
     marginBottom: '16px',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    alignItems: 'center'
   },
   searchInput: {
-    width: '250px',
-    minWidth: '180px',
+    width: '220px',
+    flexShrink: 0,
     position: 'relative'
   }
 };
@@ -757,7 +760,7 @@ const App = () => {
             <Search style={{position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af'}} size={20} />
             <input
               type="text"
-              placeholder="搜索合同编号、名称或相对方..."
+              placeholder="搜索合同编号、名称..."
               style={{...styles.input, width: '100%', paddingLeft: '40px'}}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
