@@ -304,18 +304,19 @@ const styles = {
     justifyContent: 'flex-end',
     gap: '12px'
   },
-  searchBar: {
-    display: 'grid',
-    gridTemplateColumns: 'minmax(260px, 1fr) repeat(2, minmax(120px, auto)) minmax(120px, auto)',
-    columnGap: '12px',
-    rowGap: '12px',
-    marginBottom: '16px',
-    alignItems: 'center'
-  },
-  searchInput: {
-    position: 'relative',
-    width: '100%'
-  },
+ searchBar: {
+  display: 'grid',
+  gridTemplateColumns: 'minmax(260px, 1fr) repeat(2, minmax(140px, auto)) minmax(120px, auto)',
+  columnGap: '12px',
+  rowGap: '12px',
+  marginBottom: '16px',
+  alignItems: 'center'
+},
+searchInput: {
+  position: 'relative',
+  width: '100%'
+},
+
 
 // 独立的表单组件 - 解决输入框失焦问题
 const FormModal = React.memo(({ 
