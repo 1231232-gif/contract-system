@@ -345,14 +345,15 @@ const FormModal = React.memo(({
         <div style={styles.modalBody}>
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px'}}>
             <div>
-              <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同编号 *</label>
-              <input
-                type="text"
-                style={{...styles.input, width: '100%'}}
-                value={formData.contractNo || ''}
-                onChange={(e) => onChange('contractNo', e.target.value)}
-              />
-            </div>
+ 	   	 <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>对方 *</label>
+  		 <input
+  		     type="text"
+    		     style={{...styles.input, width: '100%'}}
+    		     value={formData.counterparty || ''}
+    		     onChange={(e) => onChange('counterparty', e.target.value)}
+  />
+</div>
+
             
             <div>
               <label style={{display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px'}}>合同名称 *</label>
