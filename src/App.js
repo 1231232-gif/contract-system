@@ -305,18 +305,17 @@ const styles = {
     gap: '12px'
   },
   searchBar: {
-    display: 'flex',
-    gap: '12px',
+    display: 'grid',
+    gridTemplateColumns: 'minmax(260px, 1fr) repeat(2, minmax(120px, auto)) minmax(120px, auto)',
+    columnGap: '12px',
+    rowGap: '12px',
     marginBottom: '16px',
-    flexWrap: 'wrap',
     alignItems: 'center'
   },
   searchInput: {
-    width: '220px',
-    flexShrink: 0,
-    position: 'relative'
-  }
-};
+    position: 'relative',
+    width: '100%'
+  },
 
 // 独立的表单组件 - 解决输入框失焦问题
 const FormModal = React.memo(({ 
@@ -757,7 +756,18 @@ const App = () => {
       <div style={styles.searchBar}>
         <div style={styles.searchInput}>
           <div style={{position: 'relative'}}>
-            <Search style={{position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af'}} size={20} />
+            <Search
+  style={{
+    position: 'absolute',
+    left: 12,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    color: '#9ca3af',
+    pointerEvents: 'none'
+  }}
+  size={20}
+/>
+
             <input
               type="text"
               placeholder="搜索合同编号、名称..."
